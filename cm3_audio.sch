@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -15039,9 +15039,6 @@ Parts Updated:
 <part name="IC7" library="osborn" deviceset="WM8731" device="WIDE" value="WM8731WIDE">
 <attribute name="CID" value="333"/>
 </part>
-<part name="R46" library="osborn" deviceset="RESISTOR" device="0603-RES" value="10k">
-<attribute name="CID" value="69"/>
-</part>
 <part name="JP8" library="pinhead" deviceset="PINHD-1X2" device="">
 <attribute name="CID" value=""/>
 </part>
@@ -15114,6 +15111,9 @@ Parts Updated:
 </part>
 <part name="Q2" library="osborn" deviceset="MOSFET-NCHANNEL" device="SOT523">
 <attribute name="CID" value="359"/>
+</part>
+<part name="C4" library="osborn" deviceset="CAP" device="0603-CAP" value="100n">
+<attribute name="CID" value="67"/>
 </part>
 </parts>
 <sheets>
@@ -15419,9 +15419,6 @@ Parts Updated:
 <instance part="IC7" gate="G$1" x="657.86" y="175.26">
 <attribute name="CID" x="657.86" y="175.26" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R46" gate="G$1" x="607.06" y="210.82" rot="R90">
-<attribute name="CID" x="607.06" y="210.82" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="JP8" gate="G$1" x="779.78" y="172.72">
 <attribute name="CID" x="779.78" y="172.72" size="1.778" layer="96" display="off"/>
 </instance>
@@ -15494,6 +15491,9 @@ Parts Updated:
 </instance>
 <instance part="Q2" gate="G$1" x="331.47" y="199.39" rot="R180">
 <attribute name="CID" x="331.47" y="199.39" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="C4" gate="G$1" x="632.46" y="142.24">
+<attribute name="CID" x="632.46" y="142.24" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -16008,9 +16008,14 @@ Parts Updated:
 <pinref part="C50" gate="G$1" pin="-"/>
 </segment>
 <segment>
-<wire x1="637.54" y1="205.74" x2="629.92" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="637.54" y1="205.74" x2="632.46" y2="205.74" width="0.1524" layer="91"/>
 <label x="629.92" y="205.74" size="1.778" layer="95"/>
 <pinref part="IC7" gate="G$1" pin="MODE"/>
+<pinref part="IC7" gate="G$1" pin="CS"/>
+<wire x1="632.46" y1="205.74" x2="629.92" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="637.54" y1="195.58" x2="632.46" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="195.58" x2="632.46" y2="205.74" width="0.1524" layer="91"/>
+<junction x="632.46" y="205.74"/>
 </segment>
 <segment>
 <wire x1="637.54" y1="144.78" x2="635" y2="144.78" width="0.1524" layer="91"/>
@@ -16042,7 +16047,8 @@ Parts Updated:
 <wire x1="716.28" y1="134.62" x2="706.12" y2="134.62" width="0.1524" layer="91"/>
 <junction x="706.12" y="134.62"/>
 <pinref part="C55" gate="G$1" pin="2"/>
-<wire x1="635" y1="134.62" x2="624.84" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="635" y1="134.62" x2="632.46" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="134.62" x2="624.84" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="624.84" y1="134.62" x2="624.84" y2="139.7" width="0.1524" layer="91"/>
 <junction x="635" y="134.62"/>
 <pinref part="C54" gate="G$1" pin="-"/>
@@ -16065,6 +16071,9 @@ Parts Updated:
 <wire x1="769.62" y1="172.72" x2="769.62" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="769.62" y1="134.62" x2="762" y2="134.62" width="0.1524" layer="91"/>
 <junction x="762" y="134.62"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="632.46" y1="139.7" x2="632.46" y2="134.62" width="0.1524" layer="91"/>
+<junction x="632.46" y="134.62"/>
 </segment>
 <segment>
 <pinref part="C46" gate="G$1" pin="2"/>
@@ -16471,15 +16480,12 @@ Parts Updated:
 <wire x1="619.76" y1="218.44" x2="619.76" y2="223.52" width="0.1524" layer="91"/>
 <junction x="619.76" y="218.44"/>
 <label x="619.76" y="223.52" size="1.778" layer="95"/>
-<pinref part="R46" gate="G$1" pin="2"/>
-<wire x1="614.68" y1="218.44" x2="607.06" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="607.06" y1="218.44" x2="607.06" y2="215.9" width="0.1524" layer="91"/>
-<junction x="614.68" y="218.44"/>
 </segment>
 <segment>
 <wire x1="637.54" y1="152.4" x2="635" y2="152.4" width="0.1524" layer="91"/>
 <label x="612.14" y="152.4" size="1.778" layer="95"/>
-<wire x1="635" y1="152.4" x2="624.84" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="635" y1="152.4" x2="632.46" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="632.46" y1="152.4" x2="624.84" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="624.84" y1="152.4" x2="617.22" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="617.22" y1="152.4" x2="612.14" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="637.54" y1="149.86" x2="635" y2="149.86" width="0.1524" layer="91"/>
@@ -16493,6 +16499,9 @@ Parts Updated:
 <junction x="624.84" y="152.4"/>
 <pinref part="IC7" gate="G$1" pin="BVDD"/>
 <pinref part="IC7" gate="G$1" pin="DVDD"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="632.46" y1="152.4" x2="632.46" y2="147.32" width="0.1524" layer="91"/>
+<junction x="632.46" y="152.4"/>
 </segment>
 </net>
 <net name="VCC_1V8" class="0">
@@ -16972,11 +16981,6 @@ Parts Updated:
 <label x="121.92" y="226.06" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="A" pin="6"/>
-<wire x1="60.96" y1="78.74" x2="38.1" y2="78.74" width="0.1524" layer="91"/>
-<label x="38.1" y="78.74" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="R19" gate="G$1" pin="2"/>
 <wire x1="518.16" y1="147.32" x2="551.18" y2="147.32" width="0.1524" layer="91"/>
 <label x="518.16" y="147.32" size="1.778" layer="95"/>
@@ -16987,11 +16991,6 @@ Parts Updated:
 <pinref part="SODIMM" gate="G$1" pin="65/GPIO19"/>
 <wire x1="144.78" y1="223.52" x2="121.92" y2="223.52" width="0.1524" layer="91"/>
 <label x="121.92" y="223.52" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="JP2" gate="A" pin="7"/>
-<wire x1="60.96" y1="76.2" x2="38.1" y2="76.2" width="0.1524" layer="91"/>
-<label x="38.1" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="2"/>
@@ -17006,11 +17005,6 @@ Parts Updated:
 <label x="121.92" y="218.44" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="JP2" gate="A" pin="9"/>
-<wire x1="60.96" y1="71.12" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
-<label x="38.1" y="71.12" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="R18" gate="G$1" pin="2"/>
 <wire x1="518.16" y1="142.24" x2="558.8" y2="142.24" width="0.1524" layer="91"/>
 <label x="518.16" y="142.24" size="1.778" layer="95"/>
@@ -17021,11 +17015,6 @@ Parts Updated:
 <pinref part="SODIMM" gate="G$1" pin="71/GPIO21"/>
 <wire x1="144.78" y1="215.9" x2="121.92" y2="215.9" width="0.1524" layer="91"/>
 <label x="121.92" y="215.9" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="JP2" gate="A" pin="8"/>
-<wire x1="60.96" y1="73.66" x2="38.1" y2="73.66" width="0.1524" layer="91"/>
-<label x="38.1" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="2"/>
@@ -17455,16 +17444,6 @@ Parts Updated:
 <wire x1="685.8" y1="180.34" x2="685.8" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="685.8" y1="172.72" x2="678.18" y2="172.72" width="0.1524" layer="91"/>
 <pinref part="IC7" gate="G$1" pin="MICBIAS"/>
-</segment>
-</net>
-<net name="N$56" class="0">
-<segment>
-<pinref part="IC7" gate="G$1" pin="CS"/>
-<wire x1="637.54" y1="195.58" x2="617.22" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="617.22" y1="195.58" x2="617.22" y2="190.5" width="0.1524" layer="91"/>
-<wire x1="617.22" y1="190.5" x2="607.06" y2="190.5" width="0.1524" layer="91"/>
-<pinref part="R46" gate="G$1" pin="1"/>
-<wire x1="607.06" y1="205.74" x2="607.06" y2="190.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$58" class="0">
